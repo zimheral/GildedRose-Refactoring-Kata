@@ -48,7 +48,7 @@ class GildedRoseTest {
     }
 
     @Test
-    void shouldLowerQualityValueByTwoWhenSellInPasses() {
+    void shouldLowerQualityValueByTwoWhenSellInHasPassed() {
         //GIVEN
         Item[] items = new Item[]{new Item("ReduceQualityBy2", 0, 2)};
         GildedRose app = new GildedRose(items);
