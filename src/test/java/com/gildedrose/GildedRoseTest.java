@@ -179,4 +179,21 @@ class GildedRoseTest {
         assertEquals(0, app.items[0].quality);
         assertEquals(0, app.items[1].quality);
     }
+
+    @Test
+    void shouldDecreaseQualityTwiceAsFastWhenItemIsConjured() {
+        //GIVEN
+        Item conjured1 = new Item("Conjured item", 0, 3);
+        Item conjured2 = new Item("Conjured item", 2, 6);
+        Item[] items = new Item[]{conjured1,conjured2};
+        GildedRose app = new GildedRose(items);
+
+        //WHEN
+        app.updateQuality();
+
+        //THEN
+        assertEquals(0, app.items[0].quality);
+        assertEquals(4, app.items[1].quality);
+
+    }
 }
