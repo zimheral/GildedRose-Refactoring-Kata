@@ -196,4 +196,26 @@ class GildedRoseTest {
         assertEquals(4, app.items[1].quality);
 
     }
+
+    //One more additional test to check flow control
+    @Test
+    void shouldProcessItemsOfDifferentTypes() {
+        //GIVEN
+        Item agedBrie = new Item("Aged Brie", 1, 3);
+        Item backstagePass = new Item("Backstage passes to a TAFKAL80ETC concert", 11, 10);
+        Item conjured = new Item("Conjured item", 0, 6);
+        Item normalItem = new Item("Normal item", 2, 6);
+
+        Item[] items = new Item[]{agedBrie,backstagePass, conjured, normalItem};
+        GildedRose app = new GildedRose(items);
+
+        //WHEN
+        app.updateQuality();
+
+        //THEN
+        assertEquals(4, app.items[0].quality);
+        assertEquals(11, app.items[1].quality);
+        assertEquals(2, app.items[2].quality);
+        assertEquals(5, app.items[3].quality);
+    }
 }
